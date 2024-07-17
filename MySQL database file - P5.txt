@@ -1,0 +1,64 @@
+create database AZRR;
+use AZRR;
+create table Rooms (Room_No varchar(30),Room_Type varchar(30), Customer_Name varchar(30),Contact_No varchar(10),
+Address varchar(30),Id_Proof_No varchar(30),room_available varchar(30));
+alter table Rooms add column Check_in_Time varchar(30) after Id_Proof_No;
+select *from Rooms;
+insert into Rooms value ('A01','Single_NonAC','Asrar','9876543210','11,gh road,Ambur','A09876','10:00AM','no'),('A02','Single_NonAC','','','','','','yes'),
+('A03','Single_NonAC','','','','','','yes'),('A04','Single_NonAC','','','','','','yes'),('A05','Single_NonAC','','','','','','yes');
+
+insert into Rooms value ('A06','Single_AC','','','','','','yes'),('A07','Single_AC','','','','','','yes'),('A08','Single_AC','','','','','','yes'),
+('A09','Single_AC','','','','','','yes'),('A10','Single_AC','','','','','','yes');
+
+insert into Rooms value ('A11','Double_AC','','','','','','yes'),('A12','Double_AC','','','','','','yes'),('A13','Double_AC','','','','','','yes'),
+('A14','Double_AC','','','','','','yes'),('A15','Double_AC','','','','','','yes');
+
+insert into Rooms value ('A16','Double_NonAC','','','','','','yes'),('A17','Double_NonAC','','','','','','yes'),('A18','Double_NonAC','','','','','','yes'),
+('A19','Double_NonAC','','','','','','yes'),('A20','Double_NonAC','','','','','','yes');
+select *from Rooms;
+
+create table Room_Rent_Amount (Roono varchar(30),Roomtype varchar(30),per_day_rent int);
+insert into Room_Rent_Amount values ('A01','Single_NonAC',500),('A02','Single_NonAC',500),('A03','Single_NonAC',500),
+('A04','Single_NonAC',500),('A05','Single_NonAC',500),('A06','Single_AC',700),('A07','Single_AC',700),('A08','Single_AC',700),
+('A09','Single_AC',700),('A10','Single_AC',700),('A11','Double_NonAC',1000),('A12','Double_NonAC',1000),('A13','Double_NonAC',1000),
+('A14','Double_NonAC',1000),('A15','Double_NonAC',1000),('A16','Double_AC',1200),('A17','Double_AC',1200),('A18','Double_AC',1200),
+('A19','Double_AC',1200),('A20','Double_AC',1200);
+select *from Room_Rent_Amount;
+
+create table BreakfastMenu (Food_Code varchar(30),Food_Name varchar(30),Food_price int);
+select *from BreakfastMenu;
+insert into BreakfastMenu values ('m1','Idli 4-Pieces       ',40),('m2','Poori 2-Pieces      ',40),
+('m3','Vada 1-Pieces       ',10),('m4','Pongal              ',50);
+
+create table LunchMenu (Food_Code varchar(30),Food_Name varchar(30),Food_price int);
+select *from LunchMenu;
+insert into LunchMenu values ('l1','Chicken Briyani     ',100),('l2','Muttton Briyani     ',200),
+('l3','White-Rice          ',80),('l4','Chicken 65 - 250g   ',100);
+
+create table DinnerMenu (Food_Code varchar(30),Food_Name varchar(30),Food_price int);
+select *from DinnerMenu;
+insert into DinnerMenu values ('d1','Noodles             ',100),('d2','Fried-Rice          ',100),
+('d3','Roti 2pieces        ',40),('d4','Chicken 65 - 250g   ',100),
+('d5','Idiyappam 5-Pieces  ',50),('d6','Mutton Paya         ',150);
+		
+create table R_Breakfast_Bill (billno int,Foodname varchar(30),Price int,Qty int,Total_Amount int generated always as (Price*Qty));
+select *from R_Breakfast_Bill;
+
+create table R_Lunch_Bill (billno int,Foodname varchar(30),Price int,Qty int,Total_Amount int generated always as (Price*Qty));
+select *from R_Lunch_Bill;
+
+create table R_Dinner_Bill (billno int,Foodname varchar(30),Price int,Qty int,Total_Amount int generated always as (Price*Qty));
+
+create table Rooms_Food_Bill (Room_no varchar(30),foodtime varchar(30),Foodname varchar(30),
+Price int,Qty int,Total_Amount int generated always as (Price*Qty));
+select *from Rooms_food_Bill;
+    
+create table Recep_login (Userid Varchar(30),Password varchar(30));
+insert into Recep_login values ('r01','anser101'),('r02','anser201');
+select *from Recep_login;
+
+create table Res_Bill_login (Userid Varchar(30),Password varchar(30));
+insert into Res_Bill_login values ('rb01','anser101'),('rb02','anser201');
+select *from Res_Bill_login;
+    
+    
